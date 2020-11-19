@@ -7,10 +7,11 @@
 *
 *   name
 *   age
-
+*
 *NOTE: Your solution should use pure SQL. Ruby is used within the test cases just to validate your answer.
 *
 *SOLUTION:
+*/
 
 SELECT name, age 
 FROM users 
