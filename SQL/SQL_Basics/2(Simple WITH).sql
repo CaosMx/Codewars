@@ -33,3 +33,39 @@ SELECT id, name FROM departments
   WHERE id IN ( SELECT department_id 
                 FROM sales 
                 WHERE price > 90.00); 
+                
+
+-- Otras soluciones:
+
+WITH special_sales AS
+  (select * from sales where price > 90)
+  select id, name from departments
+  WHERE id IN (SELECT department_id FROM special_sales)
+
+
+WITH special_sales AS 
+  (
+    SELECT * 
+    FROM sales 
+    WHERE price > 90.00
+  )
+SELECT * 
+FROM departments
+WHERE id IN (SELECT department_id
+             FROM special_sales)
+             
+
+WITH special_sales (id, name)  
+AS  
+-- Define the CTE query.  
+(  
+    SELECT d.id, d.name
+    FROM sales s
+    INNER JOIN departments d
+    ON s.department_id = d.id
+    WHERE s.price > 90  
+)  
+-- Define the outer query referencing the CTE name.  
+SELECT DISTINCT id, name
+FROM special_sales
+ORDER BY id
