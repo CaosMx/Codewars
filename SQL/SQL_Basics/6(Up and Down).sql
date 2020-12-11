@@ -37,9 +37,9 @@ SELECT
   CASE 
     -- -- 2) Si la suma de la columna (number2) es impar, retornar el valor menor:
     WHEN  SUM(number2)%2!=0 THEN MIN(number2)
-    -- 3) Si la suma de la columna (number1) es par, retorna el valor mayor:
+    -- 3) Si la suma de la columna (number2) es par, retorna el valor mayor:
     ELSE MAX(number2)
-    -- Resultado de la columna number1 que se retorna y con el nombre number2
+    -- Resultado de la columna number2 que se retorna y con el nombre number2
   END as number2
 -- Tabla de donde trabaja los datos:
 FROM numbers;
